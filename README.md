@@ -1,13 +1,14 @@
 # gifTastic
 week 6 hw
 
-Topic - Sports
-football, soccer, baseball, basketball, tennis, golf, hockey, rugby, olymipics
+Topic - Viral
+jordan cry, shaggy, john wick, record egg, sponge mock, jason born, covfefe
 
-add a sport or team 
+add a viral meme 
 
-new team/sport will be pushed to the array of strings and buttons will regenerate
+new viral meme will be pushed to the array of strings and buttons will regenerate
 place in a for loop
+
 
 prepend the docs
 still and active docs on click
@@ -28,3 +29,5 @@ display title and tags on top
 
 Bonus
 Pagination
+Favorites
+Drag and Drop
