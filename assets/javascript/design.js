@@ -8,15 +8,21 @@ $( document ).ready(function() {
     //on click effects ******************************************
     //adds new button based on typed info
     $("#run-search").on("click", searchButton);
+
     //searches for meme
     $(document).on("click", ".topic-btn", topicSearch);
+
     //animate or still the mem
     $(document).on("click", ".animate", animateGif);
+
     //removal button on click allow meme buttons to be deleted
     $("#removal").on("click", removal)
 
     //closes the right side bar
     $("#toggle-left").on("click", leftBarClose);
+
+    //reopens the bar
+    $("#toggle-left-open").on('click', leftBarOpen);
     
     //*******************************************************
 
@@ -76,7 +82,7 @@ $( document ).ready(function() {
             // Here we grab the text from the input box
             let search = $(this).attr("data-name")
             // Here we construct our URL\
-            console.log($(".topic-btn"))
+            
             let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=lDSzVvM7FYinoWf9vRVrIn97y8WQVNHU&q=${search}&limit=10`;
 
             $.ajax({
@@ -84,7 +90,7 @@ $( document ).ready(function() {
             method: "GET",
             }).then(function(response){
             let results = response.data;
-            console.log(response)
+            // console.log(response)
             for(var i = 0; i < results.length; i++){
                 let newDiv = $("<div>");
                 newDiv.addClass("float-left text-center border border-dark")
@@ -111,9 +117,9 @@ $( document ).ready(function() {
                 $(newDiv).append(newTitle);
 
                 let newImg = $("<img>");
-                newImg.attr("src", results[i].images.fixed_height_small_still.url);
-                newImg.attr("data-still", results[i].images.fixed_height_small_still.url);
-                newImg.attr("data-active", results[i].images.fixed_height_small.url);
+                newImg.attr("src", results[i].images.fixed_height_still.url);
+                newImg.attr("data-still", results[i].images.fixed_height_still.url);
+                newImg.attr("data-active", results[i].images.fixed_height.url);
                 newImg.attr("data-status", "still");
                 newImg.addClass("animate");
                 newImg.attr("draggable", true)
@@ -128,7 +134,15 @@ $( document ).ready(function() {
                 
         }
         else {
+            
             $(this).remove();
+            for (var z = 0; z < topics.length; z++){
+                if ($(this).context.dataset.name === topics[z]){
+                    topics.splice(z,1)
+                }
+            }
+            
+            console.log("removed: " + $(this).context.dataset.name)
         }
     };
 
@@ -151,9 +165,17 @@ $( document ).ready(function() {
     }
 
     
-    function leftBarClose(){
-        $(".main").css('marginLeft',"0%");
+    function leftBarClose(){        
         $("#left-bar").css('display',"none");
-        // $("#open-left").css('display',"inline-block");
+        $("#toggle-left-open").css('display',"block");
+        $("")
+    }
+    function leftBarOpen(){
+        $("#left-bar").css('display', "block");
+        $("#toggle-left-open").css('display', "none")
     }
 });
+
+// ==============================
+// =============Canvas===========
+// ==============================

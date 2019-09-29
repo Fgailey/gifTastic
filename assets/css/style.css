@@ -13,9 +13,15 @@ body{
 
 /* LEFT COLUMN */
 #left-bar {
-    position: relative;
+    position: sticky;
     height: 100%;
+    background-image: url(../images/stars.jpg);
+    background-size: contain;
 }
+#invis {
+    z-index: -5;
+}
+
 
 /* Search */
 #search-form {
@@ -34,7 +40,20 @@ body{
     left: 5;
 }
 
+#toggle-left-open {
+    display: none;
+}
+
 /* END LEFT COLUMN */
+
+/* RIGHT COLUMN AREA */
+#right-bar {
+    background-image: url(../images/stars.jpg);
+    background-size: contain;
+}
+
+
+/* END RIGHT COLUMN */
 .large-header {
     position: relative;
     width: 100%;
