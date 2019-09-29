@@ -1,0 +1,78 @@
+html {
+    height: 100%;
+    
+}
+body{
+    height: 100%;
+    
+}
+.container-fluid {    
+    height: 100%;
+}
+
+
+/* LEFT COLUMN */
+#left-bar {
+    position: relative;
+    height: 100%;
+}
+
+/* Search */
+#search-form {
+    width: 100%;
+}
+/* Gif topic buttons */
+.topic-btn {
+    min-height: 40px;
+}
+/* Remove button */
+#removalRow {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    left: 5;
+}
+
+/* END LEFT COLUMN */
+.large-header {
+    position: relative;
+    width: 100%;
+    background: #111;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+ }
+ 
+ .demo .large-header {
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
+ }
+ 
+ .main-title {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    color: #f9f1e9;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+ }
+ 
+ .demo .main-title {
+    text-transform: uppercase;
+    font-size: 4.2em;
+    letter-spacing: 0.1em;
+ }
+ 
+ .main-title .thin {
+    font-weight: 200;
+ }
+ 
+ @media only screen and (max-width: 768px) {
+    .demo .main-title {
+       font-size: 3em;
+    }
+ }

@@ -11,49 +11,76 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="./assets/javascript/design.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
 </head>
 <body>
     <div class="container-fluid">
 
-        <div class="row">
+        <div class="row h-100">
             <!-- column of buttons and search -->
-            <div class="col-3">
-                
+            <div class="col-3 border-right" id="left-bar">
+
+                <div class="row">
+                    <button class="btn btn-dark mb-2 btn-block" id="toggle-left">Close</button>
+                </div>
+
                 <div id="search-bar" class="row">
-                    <form >
-                        
-                        <input type="text" class="form-control" id="search-term">
-                        <button type="submit" id="run-search">Search</button>
-                    
+                    <form id="search-form" role="form flex-fill d-flex">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control mb-2" id="search-term">
+
+                            <button type="submit" id="run-search" class="btn btn-dark btn-block">
+                                <span title="This search will create a new button">Search</span>
+                            </button>
+                            
+                        </div>
                     </form>
                 </div>
                 
                 <!-- this is were gif topics generate buttons static -->
-                <div id="gifButtons" class="row">
+                <div id="gifButtons" class="row mt-4">
 
+                </div>
+                <div class="row " id="removalRow">
+                    <button id="removal" class="btn btn-dark btn-block">
+                        <span title="When this button is red click the memes to remove them from the list">Remove Btns</span>
+                    </button>
                 </div>
             </div>
 
             <!-- Contains rest of page -->
-            <div class="col">
+            <div class="col p-0 main">
 
                 <!-- Top title -->
                 <div id="title" class="row">
-
-                </div>
-
-                <!-- contains content and right side bar for navs/favorites -->
-                <div class="row">
-
-                    <!-- CONTENT AREA scroll-->
-                    <div id="content" class="col">
-
+                        <div class="container demo">
+                            <div class="content">
+                                <div id="large-header" class="large-header">
+                                    <canvas id="demo-canvas"></canvas>
+                                    <h1 class="main-title"><span class="thin">Meme</span> Space</h1>
+                                </div>
+                            </div>
+                        </div>
+                    
                     </div>
+                    
+                    <!-- contains content and right side bar for navs/favorites -->
+                    <div class="row m-auto">
+                        
+                        <div id="content" class="col p-0">
+                                
+                        </div>
+                    <!-- CONTENT AREA scroll-->
+                    
 
                     <!-- RIGHT SIDEBAR static but can toggle-->
-                    <div id="right-bar" class="col-2">
-                    <!-- OTHER API SIGTS -->
+                    <div id="right-bar" class="col-2 p-0 border-left">
                     <!-- FAVORITES -->
+                    Favorites
+                    <!-- OTHER API SITES -->
+
                     <!-- RANDOM AND RESET BUTTON -->
                     </div>
                 </div>
@@ -65,3 +92,4 @@
     </div>
 </body>
 </html>
+
