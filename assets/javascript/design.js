@@ -31,6 +31,11 @@ $( document ).ready(function() {
 
     //reopens the bar
     $("#toggle-left-open").on('click', leftBarOpen);
+
+    //clears content ares
+    $("#clearGifs").on('click', function clearGifs(){
+        $("#content").empty()
+    })
     
     //*******************************************************
 

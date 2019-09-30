@@ -20,10 +20,10 @@
         <div class="row h-100">
             <!-- column of buttons and search -->
             
-            <div class="col-3 border-right position-fixed d-flex flex-column" id="left-bar">
+            <div class="col-3 border-right border-info position-fixed d-flex flex-column" id="left-bar">
 
                 <div class="row">
-                    <button class="btn btn-dark mb-2 btn-block" id="toggle-left">Collapse</button>
+                    <button class="btn btn-dark mb-2 btn-block border-info" id="toggle-left">Collapse</button>
                 </div>
 
                 <div id="search-bar" class="row">
@@ -32,7 +32,7 @@
 
                             <input type="text" class="form-control mb-2" placeholder="Search for Space Stuff here" id="search-term">
 
-                            <button type="submit" id="run-search" class="btn btn-dark btn-block " title="This search will create a new button">
+                            <button type="submit" id="run-search" class="btn btn-dark btn-block border-info" title="This search will create a new button">
                                 <span >Search</span>
                             </button>
                             
@@ -52,8 +52,11 @@
                 <div class="row mt-auto" id="removalRow" title="Click to find a random Gif">
                         <button id="random" class="btn btn-block btn-dark ">Random</button>
                 </div>
+                <div class="row">
+                    <button id="clearGifs" class="btn btn-dark btn-block border-info">Clear Gifs</button>
+                </div>
                 <div class="row" id="removalRow">
-                    <button id="removal" class="btn btn-dark btn-block" title="When this button is red click the buttons to remove them from the list">
+                    <button id="removal" class="btn btn-dark btn-block border-info" title="When this button is red click the buttons to remove them from the list">
                         <span >Remove Btns</span>
                     </button>
                 </div>
@@ -61,7 +64,7 @@
 
             <!----------------------------------------------- Contains rest of page ---------------------------------------------------------->
             <div id="invis" class="col-3"></div>
-            <div class="col-9 p-0 main">
+            <div class="col-9 main">
 
                 <div class="container-fluid p-0">
 
@@ -83,7 +86,7 @@
                     <div class="row m-auto">
                         
                         <!-- CONTENT AREA scroll-->
-                        <div id="content" class="col bg-secondary">
+                        <div id="content" class="col bg-secondary border-top border-info">
                                 
                         </div>
                         
