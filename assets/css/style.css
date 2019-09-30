@@ -107,6 +107,6 @@ body{
        font-size: 3em;
     }
     .favored {
-        min-height: 100px;
+        max-height: 100px;
     }
  }

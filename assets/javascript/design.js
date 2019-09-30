@@ -3,6 +3,9 @@ let titleDisplay = String;
 let remove = true;
 let offset = 0;
 let search;
+let favTopicsName = [];
+let favTopicsID = [];
+let saveCount = 0;
 
 
 $( document ).ready(function() {
@@ -296,6 +299,16 @@ $( document ).ready(function() {
             });
         }else {
             $(this).remove();
+            console.log(this)
+            console.log(favTopicsID)
+            console.log(favTopicsName)
+            for (var z = 0; z < favTopicsName.length; z++){
+                if ($(this).attr('data-name') === favTopicsName[z]){
+                    favTopicsName.splice(z,1)
+                    favTopicsID.splice(z,1)
+                    
+                }
+            }
         }
         
     }
@@ -355,12 +368,53 @@ function allowDrop(event){
 }
 function drop(event){
     event.preventDefault()
+    saveCount ++;
+    $(".favorites").empty()
 
-    var newButton = $("<button>")
-    newButton.attr("data-name", gifName);
-    newButton.attr("data-name", gifID);
-    newButton.addClass("favored btn btn-warning btn-outline-dark");
-    newButton.text(gifName);
-    $(".favorites").append(newButton)
+    favTopicsName.push(gifName)
+    favTopicsID.push(gifID)
+    
+    for (let y = 0; y < favTopicsName.length; y++){
+        var newButton = $("<button>")
+        newButton.attr("data-name", favTopicsName[y]);
+        newButton.attr("data-ID", favTopicsID[y]);
+        newButton.addClass("favored btn btn-warning btn-outline-dark");
+        newButton.text(favTopicsName[y]);
+        $(".favorites").append(newButton)
+    }
 }
 //================================================
+
+    // localStorage.removeItem(`favName${$(this).attr('data-num')}`)
+    // localStorage.removeItem(`favID${$(this).attr('data-num')}`)
+    // localStorage.removeItem(`data-${$(this).attr('data-num')}`)
+
+    // localStorage.setItem(`favName${saveCount}`, gifName)
+    // localStorage.setItem(`favID${saveCount}`, gifID)
+    // localStorage.setItem(`data-${saveCount}`, saveCount)
+
+    // localStorage.getItem(`favName${saveCount}`, gifName)
+    // localStorage.getItem(`favID${saveCount}`, gifID)
+    // localStorage.getItem(`data-${saveCount}`, saveCount)
+
+
+    //   // Capture User Inputs and store them into variables
+    //   let user = {
+    //     name: $("#name-input").val().trim(),
+    //     email: $("#email-input").val().trim(),
+    //     age: $("#age-input").val().trim(),
+    //     comment: $("#comment-input").val().trim(),
+    //   }
+
+    //   // Console log each of the user inputs to confirm we are receiving them correctly
+    //   console.log(user.name)
+    //   console.log(user.email)
+    //   console.log(user.age)
+    //   console.log(user.comment)
+    //   localStorage.setItem("user", user);
+
+    //   // Output all of the new information into the relevant HTML sections
+    //   $("#name-display").html(user.name);
+    //   $("#email-display").html(`Email: ${user.email}`);
+    //   $("#age-display").html(user.age);
+    //   $("#comment-display").html(user.comment);
