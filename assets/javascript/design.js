@@ -241,7 +241,7 @@ $( document ).ready(function() {
     function favorites(){
         event.preventDefault();
         if (remove){
-            
+            gifID = $(this).attr('data-ID')
             let queryURL = `https://api.giphy.com/v1/gifs/${gifID}?api_key=lDSzVvM7FYinoWf9vRVrIn97y8WQVNHU`;
 
             $.ajax({
@@ -368,11 +368,12 @@ function allowDrop(event){
 }
 function drop(event){
     event.preventDefault()
-    saveCount ++;
     $(".favorites").empty()
-
+    
     favTopicsName.push(gifName)
     favTopicsID.push(gifID)
+    console.log(favTopicsID)
+    console.log(favTopicsName)
     
     for (let y = 0; y < favTopicsName.length; y++){
         var newButton = $("<button>")
