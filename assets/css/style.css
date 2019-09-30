@@ -31,13 +31,13 @@ body{
 .topic-btn {
     min-height: 40px;
 }
-/* Remove button */
-#removalRow {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 20px;
-    left: 5;
+.favored {
+    min-height: 40px;
+}
+/* Random button */
+#random {
+    background-image: url(../images/question.png);
+    background-size: contain;
 }
 
 #toggle-left-open {
@@ -46,14 +46,25 @@ body{
 
 /* END LEFT COLUMN */
 
-/* RIGHT COLUMN AREA */
-#right-bar {
-    background-image: url(../images/stars.jpg);
-    background-size: contain;
+/* Favorites AREA */
+.favorites {
+    min-height: 200px;
+    
+}
+
+#favTitle {
+    opacity: 1;
+}
+
+.animate {
+    cursor: pointer;
+}
+.animate.animate:active {
+    cursor: grabbing;
 }
 
 
-/* END RIGHT COLUMN */
+/* END Favorites */
 .large-header {
     position: relative;
     width: 100%;
@@ -66,6 +77,7 @@ body{
  
  .demo .large-header {
     background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
+    background-size: cover;
  }
  
  .main-title {

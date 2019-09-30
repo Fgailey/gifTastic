@@ -1,4 +1,4 @@
-let topics = ['jordan cry', 'harambe', 'john wick', 'record egg', 'sponge mock', 'jason bourne', 'covfefe'];
+let topics = ['Pluto', 'Solar System', 'Earth', 'Mars', 'Space Force', 'Black Hole', 'Space Jam'];
 let titleDisplay = String;
 let remove = true;
 
@@ -14,6 +14,12 @@ $( document ).ready(function() {
 
     //animate or still the mem
     $(document).on("click", ".animate", animateGif);
+
+    //random gif
+    $("#random").on('click', randomSearch)
+
+    //favorites
+    $(document).on('click', ".favored", favorites)
 
     //removal button on click allow meme buttons to be deleted
     $("#removal").on("click", removal)
@@ -121,13 +127,17 @@ $( document ).ready(function() {
                 newImg.attr("data-still", results[i].images.fixed_height_still.url);
                 newImg.attr("data-active", results[i].images.fixed_height.url);
                 newImg.attr("data-status", "still");
+                newImg.attr("data-name", titleDisplay);
+                newImg.attr("data-id", results[i].id);
+                newImg.attr("ondragstart", "drag(event)");
+                newImg.attr("title", "Drag this to favorites to save for later");
                 newImg.addClass("animate");
                 newImg.attr("draggable", true)
                 $(newDiv).append(newImg)
 
 
                 let newRating = $("<div>");
-                newRating.text(`Results: ${results[i].rating.toUpperCase()}`);
+                newRating.text(`Rating: ${results[i].rating.toUpperCase()}`);
                 $(newDiv).append(newRating)
             }
             });
@@ -145,7 +155,136 @@ $( document ).ready(function() {
             console.log("removed: " + $(this).context.dataset.name)
         }
     };
+    //when random button is pressed
+    function randomSearch(){
+        event.preventDefault();
+            
+            
+            let queryURL = `https://api.giphy.com/v1/gifs/random?api_key=lDSzVvM7FYinoWf9vRVrIn97y8WQVNHU`;
 
+            $.ajax({
+                url: queryURL,
+                method: "GET",
+                }).then(function(response){
+                let results = response.data;
+                // console.log(response)
+                
+                    let newDiv = $("<div>");
+                    newDiv.addClass("float-left text-center border border-dark")
+                    $("#content").prepend(newDiv);
+                    
+                    //removes everything after from gif and later then capitilizes the words
+                    let gifTitle = results.title
+                    let n = gifTitle.search("GIF")            
+                    str = gifTitle.slice(0,n)
+
+                    if (str.search(" ")){
+                        str = str.split(" ");
+
+                        for (var c = 0, x = str.length; c < x; c++) {
+                        str[c] = str[c].charAt(0).toUpperCase() + str[c].substr(1);
+                        }
+
+                        titleDisplay = str.join(" ");
+                    }
+                    if (titleDisplay === ""){
+                        titleDisplay = "No Title"
+                    }
+                    //adds the new title to the gif
+                    let newTitle = $("<div>");
+                    newTitle.text(`${titleDisplay}`);
+                    $(newDiv).append(newTitle);
+
+                    let newImg = $("<img>");
+                    newImg.attr("src", results.images.fixed_height_still.url);
+                    newImg.attr("data-still", results.images.fixed_height_still.url);
+                    newImg.attr("data-active", results.images.fixed_height.url);
+                    newImg.attr("data-status", "still");
+                    newImg.attr("data-name", titleDisplay);
+                    newImg.attr("data-id", results.id);
+                    newImg.attr("ondragstart", "drag(event)");
+                    newImg.attr("title", "Drag this to favorites to save for later");
+                    newImg.addClass("animate");
+                    newImg.attr("draggable", true)
+                    $(newDiv).append(newImg)
+
+
+                    let newRating = $("<div>");
+                    newRating.text(`Rating: none`);
+                    $(newDiv).append(newRating)
+                    console.log(results)
+                
+            });
+                
+        
+        
+    }
+    //when a favorite button is pressed
+    function favorites(){
+        event.preventDefault();
+        if (remove){
+            
+            let queryURL = `https://api.giphy.com/v1/gifs/${gifID}?api_key=lDSzVvM7FYinoWf9vRVrIn97y8WQVNHU`;
+
+            $.ajax({
+                url: queryURL,
+                method: "GET",
+                }).then(function(response){
+                let results = response.data;
+                // console.log(response)
+                
+                    let newDiv = $("<div>");
+                    newDiv.addClass("float-left text-center border border-dark")
+                    $("#content").prepend(newDiv);
+                    
+                    //removes everything after from gif and later then capitilizes the words
+                    let gifTitle = results.title
+                    let n = gifTitle.search("GIF")            
+                    str = gifTitle.slice(0,n)
+
+                    if (str.search(" ")){
+                        str = str.split(" ");
+
+                        for (var c = 0, x = str.length; c < x; c++) {
+                        str[c] = str[c].charAt(0).toUpperCase() + str[c].substr(1);
+                        }
+
+                        titleDisplay = str.join(" ");
+                    }
+                    if (titleDisplay === ""){
+                        titleDisplay = "No Title"
+                    }
+                    //adds the new title to the gif
+                    let newTitle = $("<div>");
+                    newTitle.text(`${titleDisplay}`);
+                    $(newDiv).append(newTitle);
+
+                    let newImg = $("<img>");
+                    newImg.attr("src", results.images.fixed_height_still.url);
+                    newImg.attr("data-still", results.images.fixed_height_still.url);
+                    newImg.attr("data-active", results.images.fixed_height.url);
+                    newImg.attr("data-status", "still");
+                    newImg.attr("data-name", titleDisplay);
+                    newImg.attr("data-id", results.id);
+                    newImg.attr("ondragstart", "drag(event)");
+                    newImg.attr("title", "Drag this to favorites to save for later");
+                    newImg.addClass("animate");
+                    newImg.attr("draggable", true)
+                    $(newDiv).append(newImg)
+
+
+                    let newRating = $("<div>");
+                    newRating.text(`Rating: none`);
+                    $(newDiv).append(newRating)
+                    console.log(results)
+                
+            });
+        }else {
+            $(this).remove();
+        }
+        
+    }
+  
     //alternates removal button
     function removal(){
         console.log("working")
@@ -167,15 +306,44 @@ $( document ).ready(function() {
     
     function leftBarClose(){        
         $("#left-bar").css('display',"none");
+        $("#invis").css('display',"none");
         $("#toggle-left-open").css('display',"block");
-        $("")
+        $(".main").removeClass('col-9')
+        $(".main").addClass('col')
     }
     function leftBarOpen(){
         $("#left-bar").css('display', "block");
+        $("#invis").css('display',"block");
         $("#toggle-left-open").css('display', "none")
+        $(".main").addClass('col-9')
+        $(".main").removeClass('col')
     }
-});
 
-// ==============================
-// =============Canvas===========
-// ==============================
+ 
+});
+let gifName;
+let gifID; 
+// ===========DRAG & DROP ===========================
+$(document).on('dragstart', ".animate", function saveData (){
+    gifName = $(this).attr("data-name")
+    gifID = $(this).attr("data-id")
+})
+
+function drag(event){
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+function allowDrop(event){
+    event.preventDefault()
+}
+function drop(event){
+    event.preventDefault()
+
+    var newButton = $("<button>")
+    newButton.attr("data-name", gifName);
+    newButton.attr("data-name", gifID);
+    newButton.addClass("favored btn btn-success btn-outline-dark");
+    newButton.text(gifName);
+    $("#favTitle").append(newButton)
+}
+//================================================
