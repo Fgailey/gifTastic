@@ -60,7 +60,7 @@ $( document ).ready(function() {
 
             newButton.css("background-color", gen)
             newButton.attr("data-name", topics[x]);
-            newButton.addClass("topic-btn btn btn-outline-dark");
+            newButton.addClass("topic-btn btn btn-outline-dark text-secondary");
             newButton.text(topics[x]);
             $("#gifButtons").append(newButton)
         }
@@ -308,6 +308,7 @@ $( document ).ready(function() {
         $("#left-bar").css('display',"none");
         $("#invis").css('display',"none");
         $("#toggle-left-open").css('display',"block");
+        $("#left-bar").removeClass('d-flex flex-column')
         $(".main").removeClass('col-9')
         $(".main").addClass('col')
     }
@@ -316,6 +317,7 @@ $( document ).ready(function() {
         $("#invis").css('display',"block");
         $("#toggle-left-open").css('display', "none")
         $(".main").addClass('col-9')
+        $("#left-bar").addClass('d-flex flex-column')
         $(".main").removeClass('col')
     }
 
@@ -342,8 +344,8 @@ function drop(event){
     var newButton = $("<button>")
     newButton.attr("data-name", gifName);
     newButton.attr("data-name", gifID);
-    newButton.addClass("favored btn btn-success btn-outline-dark");
+    newButton.addClass("favored btn btn-warning btn-outline-dark");
     newButton.text(gifName);
-    $("#favTitle").append(newButton)
+    $(".favorites").append(newButton)
 }
 //================================================

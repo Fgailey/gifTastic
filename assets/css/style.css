@@ -31,9 +31,7 @@ body{
 .topic-btn {
     min-height: 40px;
 }
-.favored {
-    min-height: 40px;
-}
+
 /* Random button */
 #random {
     background-image: url(../images/question.png);
@@ -47,6 +45,9 @@ body{
 /* END LEFT COLUMN */
 
 /* Favorites AREA */
+.favored {
+    height: 40px;
+}
 .favorites {
     min-height: 200px;
     
@@ -75,7 +76,7 @@ body{
     z-index: 1;
  }
  
- .demo .large-header {
+ .large-header {
     background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
     background-size: cover;
  }
@@ -92,7 +93,7 @@ body{
     transform: translate3d(-50%, -50%, 0);
  }
  
- .demo .main-title {
+ .main-title {
     text-transform: uppercase;
     font-size: 4.2em;
     letter-spacing: 0.1em;
@@ -103,7 +104,10 @@ body{
  }
  
  @media only screen and (max-width: 768px) {
-    .demo .main-title {
+    .main-title {
        font-size: 3em;
+    }
+    .favored {
+        min-height: 100px;
     }
  }
