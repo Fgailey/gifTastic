@@ -1,6 +1,8 @@
 let topics = ['Pluto', 'Solar System', 'Earth', 'Mars', 'Space Force', 'Black Hole', 'Space Jam'];
 let titleDisplay = String;
 let remove = true;
+let offset = 0;
+let search;
 
 
 $( document ).ready(function() {
@@ -86,10 +88,16 @@ $( document ).ready(function() {
         event.preventDefault();
         if (remove){
             // Here we grab the text from the input box
-            let search = $(this).attr("data-name")
+            if ($(this).attr("data-name") === search){
+                offset += 10;
+            }else {
+                offset = 0;
+                $("#content").empty()
+            }
+            search = $(this).attr("data-name")
             // Here we construct our URL\
             
-            let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=lDSzVvM7FYinoWf9vRVrIn97y8WQVNHU&q=${search}&limit=10`;
+            let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=lDSzVvM7FYinoWf9vRVrIn97y8WQVNHU&q=${search}&limit=10&offset=${offset}`;
 
             $.ajax({
             url: queryURL,
@@ -116,7 +124,9 @@ $( document ).ready(function() {
 
                     titleDisplay = str.join(" ");
                 }
-
+                if (titleDisplay === ""){
+                    titleDisplay = "No Title"
+                }
                 //adds the new title to the gif
                 let newTitle = $("<div>");
                 newTitle.text(`${titleDisplay}`);
