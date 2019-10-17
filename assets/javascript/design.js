@@ -350,23 +350,23 @@ $( document ).ready(function() {
     }
 
  
-});
-let gifName;
-let gifID; 
-// ===========DRAG & DROP ===========================
-$(document).on('dragstart', ".animate", function saveData (){
-    gifName = $(this).attr("data-name")
-    gifID = $(this).attr("data-id")
-})
+    });
+    let gifName;
+    let gifID; 
+    // ===========DRAG & DROP ===========================
+    $(document).on('dragstart', ".animate", function saveData (){
+        gifName = $(this).attr("data-name")
+        gifID = $(this).attr("data-id")
+    })
 
-function drag(event){
+    function drag(event){
     event.dataTransfer.setData("text", event.target.id);
-}
+    }
 
-function allowDrop(event){
+    function allowDrop(event){
     event.preventDefault()
-}
-function drop(event){
+    }
+    function drop(event){
     event.preventDefault()
     $(".favorites").empty()
     
